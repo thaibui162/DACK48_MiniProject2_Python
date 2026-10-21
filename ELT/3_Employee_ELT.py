@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 import os
 from dotenv import load_dotenv
 
-data = pd.read_csv(r"C:\Users\thaib\Downloads\Python Practice\Sales Transaction.csv")
+data = pd.read_excel(r"C:\Users\thaib\Desktop\UNIGAP\PYTHON\Final Project\Employee.xlsx")
 
 data['ingestion_timestamp'] = pd.Timestamp.now()
 
@@ -17,7 +17,6 @@ DB_NAME = os.getenv('DB_NAME')
 
 print(data.head())
 
-
 try:
     engine = create_engine(f'postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
     print("engine created successfully")
@@ -25,10 +24,9 @@ except Exception as e:
     print(f"Error creating database engine: {e}")
     exit(1)
 
-
 try:
     data.to_sql(
-        name = "Raw_Sales",
+        name = "Raw_Employee",
         con = engine,
         schema = "bronze",
         if_exists = "append",

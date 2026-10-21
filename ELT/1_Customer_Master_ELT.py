@@ -3,8 +3,7 @@ from sqlalchemy import create_engine
 import os
 from dotenv import load_dotenv
 
-data = pd.read_csv(r"C:\Users\thaib\Downloads\Python Practice\Customer Master.csv")
-
+data = pd.read_csv(r"C:\Users\thaib\Desktop\UNIGAP\PYTHON\Final Project\Customer Master.csv")
 data['ingestion_timestamp'] = pd.Timestamp.now()
 
 load_dotenv()
